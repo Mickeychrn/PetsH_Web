@@ -11,4 +11,10 @@ public interface CommentDao {
 	public void addCommnet(Comment comment);
 
 	public List<Comment> getCommentById(Long id);
+	
+	public List<Comment> allComments();
+	
+	public void deleteComment(long id);
+	
+	
 }

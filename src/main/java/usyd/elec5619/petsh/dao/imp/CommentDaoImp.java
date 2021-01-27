@@ -6,6 +6,7 @@ import javax.annotation.Resource;
 
 import org.hibernate.SQLQuery;
 import org.hibernate.SessionFactory;
+import org.hibernate.classic.Session;
 import org.springframework.stereotype.Repository;
 
 import usyd.elec5619.petsh.dao.CommentDao;
@@ -34,6 +35,20 @@ public class CommentDaoImp implements CommentDao {
 		List<Comment> commentList = query.list();
 		
 		return commentList;
+	}
+
+	@Override
+	public List<Comment> allComments() {
+		List<Comment> list = this.sessionFactory.getCurrentSession().createQuery("FROM Comment").list();
+		return list;
+	}
+
+	@Override
+	public void deleteComment(long id) {
+		Session currentSession = this.sessionFactory.getCurrentSession();
+		Comment comment = (Comment) currentSession.get(Comment.class, id);
+		currentSession.delete(comment);
+		
 	}
 
 }

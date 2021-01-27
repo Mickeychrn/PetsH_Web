@@ -106,8 +106,7 @@ public class LoginAdoptController {
 		String petCategory = httpServletRequest.getParameter("petCategory");
 		String petGender = httpServletRequest.getParameter("petGender");
 		String petDescription = httpServletRequest.getParameter("petDescription");
-		
-		System.out.println(petCategory+petGender+petDescription+"++++++++++++");
+
 		
 		String access_token = "076f3fbdc7d4ff4f8a656297de20aef242bed18d";
 

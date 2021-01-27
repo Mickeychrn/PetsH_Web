@@ -49,7 +49,8 @@ public class LoginForumController {
 	
 	@RequestMapping(value = "/{id}/searchbytitle",method = RequestMethod.POST)
 	public ModelAndView searchbytitle(HttpServletRequest httpServletRequest,@PathVariable("id") Long id) {
-		String title =httpServletRequest.getParameter("title");
+		String title =httpServletRequest.getParameter("searchtitle");
+		
 		List<Forum> forums=this.forumService.searchForumsByTitle(title);
 		
 		User user = this.userService.getUserById(id);

@@ -41,9 +41,9 @@ public class PetDaoImp implements PetDao{
 	public List<Pet> searchByColor(String color) {
 		
 		
-		String sql="select * from petsh.Pet where petColor =? and isAdopted =false";
+		String sql="select * from petsh.Pet where petColor like ? and isAdopted =false";
 		SQLQuery query =this.sessionFactory.getCurrentSession().createSQLQuery(sql);
-		query.setParameter(0, color);
+		query.setParameter(0, "%"+color+"%");
 		query.addEntity(Pet.class);
 		List<Pet> pets = query.list();
 		

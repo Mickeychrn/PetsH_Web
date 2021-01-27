@@ -47,7 +47,7 @@
 							href="/petsh/profile/${profileMap.user.userId}">PROFILE</a></li>
 
 						<c:set var="authority" value="${profileMap.user.authority}" />
-						<c:if test="${authority == 0}">
+						<c:if test="${authority == 1}">
 							<li class="has-submenu"><a href="/petsh/admin/user">ADMIN</a></li>
 
 						</c:if>
@@ -90,7 +90,7 @@
 										<div class="form-group">
 											<label for="inputPassword2" class="sr-only">Search</label> <input
 												type="search" class="form-control" placeholder="title"
-												name="title">
+												name="searchtitle">
 											<button class="btn btn-primary waves-effect waves-light"
 												type="submit">Search</button>
 										</div>

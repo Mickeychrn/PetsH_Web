@@ -31,4 +31,16 @@ public class CommentServiceImp implements CommentService {
 		return commentDao.getCommentById(id);
 	}
 
+	@Override
+	public List<Comment> allComments() {
+		// TODO Auto-generated method stub
+		return commentDao.allComments();
+	}
+
+	@Override
+	public void deleteComment(long id) {
+		this.commentDao.deleteComment(id);
+		
+	}
+
 }

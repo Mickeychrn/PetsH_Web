@@ -51,4 +51,15 @@ public class ForumServiceImp implements ForumService{
 		
 	}
 
+	@Override
+	public void updateFroum(Forum forum) {
+		this.forumDao.updateFroum(forum);
+		
+	}
+
+	@Override
+	public List<Forum> searchMyForumsByTitle(String title, Long userId) {
+		return this.forumDao.searchMyForumsByTitle(title, userId);
+	}
+
 }

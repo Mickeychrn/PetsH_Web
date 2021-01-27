@@ -47,7 +47,7 @@
 
 
 						<c:set var="authority" value="${profileMap.user.authority}" />
-						<c:if test="${authority == 0}">
+						<c:if test="${authority == 1}">
 							<li class="has-submenu"><a href="/petsh/admin/user">ADMIN</a></li>
 
 						</c:if>
@@ -239,7 +239,7 @@
 
 			$.ajax({
 				type : "post",
-				url : "1/addpet",
+				url : ${profileMap.user.userId}+"/addpet",
 				data : {
 					content : result,
 					petName : petName,

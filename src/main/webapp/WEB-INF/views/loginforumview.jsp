@@ -37,7 +37,7 @@
 						<li class="has-submenu"><a href="/petsh/forum/${profileMap.user.userId}">FORUM</a></li>
 						<li class="has-submenu"><a href="/petsh/profile/${profileMap.user.userId}">PROFILE</a></li>
 						<c:set var="authority" value="${profileMap.user.authority}" />
-						<c:if test="${authority == 0}">
+						<c:if test="${authority == 1}">
 							<li class="has-submenu"><a href="/petsh/admin/user">ADMIN</a></li>
 
 						</c:if>
@@ -84,7 +84,7 @@
 
 							<div class="form-group">
 								<label>Comment:</label>
-								<textarea class="form-control" name="CommentContent" rows="3"></textarea>
+								<textarea class="form-control" name="CommentContent" rows="3" required="required"></textarea>
 							</div>
 
 
@@ -110,8 +110,6 @@
 									</div>
 								</div>
 								<p>${comment.content }</p>
-
-
 							</div>
 						</c:forEach>
 
@@ -120,24 +118,8 @@
 				</div>
 				<!-- end col -->
 			</div>
-
-
-
 		</div>
-
-
-
-
-
-
 	</div>
-
-
-
-
-
-
-
 	<footer class="footer">
 		<div class="container-fluid"></div>
 	</footer>

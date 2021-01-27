@@ -38,11 +38,12 @@
 							href="/petsh/adopt/${profileMap.user.userId}">ADOPT</a></li>
 						<li class="has-submenu"><a
 							href="/petsh/forum/${profileMap.user.userId}">FORUM</a></li>
-						<li class="has-submenu"><a href="#">PROFILE</a></li>
+						<li class="has-submenu"><a
+							href="/petsh/profile/${profileMap.user.userId}">PROFILE</a></li>
 
 
 						<c:set var="authority" value="${profileMap.user.authority}" />
-						<c:if test="${authority == 0}">
+						<c:if test="${authority == 1}">
 							<li class="has-submenu"><a href="/petsh/admin/user">ADMIN</a></li>
 
 						</c:if>
@@ -72,11 +73,25 @@
 										<img src="${profileMap.user.userPhoto}"
 											class="rounded-circle avatar-lg img-thumbnail"
 											alt="profile-image">
+										<div class="text-left mt-3">
+											<label>Profile Photo</label> <br> <input type="file"
+												id="imgurl" accept="image/png,image/gif,image/jpeg"
+												required="required" /><br>
+											<br> <input type="button" value="POST"
+												class="btn btn-info" required="required" />
+										</div>
+
+
 
 										<h4 class="mb-0">${profileMap.user.firstName}
 											${profileMap.user.lastName}</h4>
 
+
+
 										<div class="text-left mt-3">
+
+
+
 											<h4 class="font-13 text-uppercase">About Me :</h4>
 											<p class="text-muted font-13 mb-3">${profileMap.user.userBio}</p>
 											<p class="text-muted mb-2 font-13">
@@ -130,85 +145,101 @@
 													<i class="mdi mdi-account-circle mr-1"></i> Personal Info
 												</h5>
 
-												<div class="row">
-													<div class="col-md-6">
-														<div class="form-group">
-															<label for="firstname">First Name</label> <input
-																class="form-control"
-																value="${profileMap.user.lastName }" name="lastName"
-																required="required">
+												<form
+													action="/petsh/profile/${profileMap.user.userId}/updateprofileinfo"
+													method="post">
+
+													<div class="row">
+														<div class="col-md-6">
+															<div class="form-group">
+																<label for="firstname">First Name</label> <input
+																	class="form-control"
+																	value="${profileMap.user.firstName }" name="firstName"
+																	required="required">
+															</div>
 														</div>
-													</div>
-													<div class="col-md-6">
-														<div class="form-group">
-															<label for="lastname">Last Name</label> <input
-																class="form-control"
-																value="${profileMap.user.firstName }" name="firstName"
-																required="required">
+														<div class="col-md-6">
+															<div class="form-group">
+																<label for="lastname">Last Name</label> <input
+																	class="form-control"
+																	value="${profileMap.user.lastName }" name="lastName"
+																	required="required">
+															</div>
 														</div>
+														<!-- end col -->
 													</div>
-													<!-- end col -->
-												</div>
+													<!-- end row -->
+
+													<div class="row">
+														<div class="col-12">
+															<div class="form-group">
+																<label for="userbio">Bio</label>
+																<textarea class="form-control" rows="4" name="userbio">${profileMap.user.userBio }</textarea>
+															</div>
+														</div>
+														<!-- end col -->
+													</div>
+													<!-- end row -->
+
+													<div class="row">
+														<div class="col-md-6">
+															<div class="form-group">
+																<label for="useremail">Email Address</label> <input
+																	class="form-control" value="${profileMap.user.eMail }"
+																	name="email" required="required">
+															</div>
+														</div>
+														<div class="col-md-6">
+															<div class="form-group">
+																<label for="userpassword">Password</label> <input
+																	type="password" class="form-control" name="password"
+																	placeholder="Enter password"
+																	value="${profileMap.user.password }"
+																	required="required">
+															</div>
+														</div>
+
+
+
+														<!-- end col -->
+													</div>
+
+													<div class="text-right">
+														<button type="submit" class="btn btn-info">UPDATE</button>
+													</div>
+												</form>
+
+
 												<!-- end row -->
 
-												<div class="row">
-													<div class="col-12">
-														<div class="form-group">
-															<label for="userbio">Bio</label>
-															<textarea class="form-control" rows="4" name="userbio">${profileMap.user.userBio }</textarea>
-														</div>
-													</div>
-													<!-- end col -->
-												</div>
-												<!-- end row -->
-
-												<div class="row">
-													<div class="col-md-6">
-														<div class="form-group">
-															<label for="useremail">Email Address</label> <input
-																class="form-control" value="${profileMap.user.eMail }"
-																name="email" required="required">
-														</div>
-													</div>
-													<div class="col-md-6">
-														<div class="form-group">
-															<label for="userpassword">Password</label> <input
-																type="password" class="form-control" name="password"
-																placeholder="Enter password"
-																value="${profileMap.user.password }" required="required">
-														</div>
-													</div>
 
 
-
-													<!-- end col -->
-												</div>
-
-												<div class="row">
-													<div class="col-md-6">
-														<div class="form-group">
-															<label>Profile Photo</label> <br> <input type="file"
-																id="imgurl" accept="image/png,image/gif,image/jpeg"
-																required="required" />
-														</div>
-													</div>
-
-
-												</div>
-												<!-- end row -->
-
-
-
-												<div class="text-right">
-													<input type="button" value="POST" class="btn btn-danger"
-														required="required" />
-												</div>
+												<div class="text-right"></div>
 
 											</div>
 
 
 											<div class="tab-pane" id="mypost">
+
 												<!-- Story Box-->
+												
+												<form class="form-inline"
+													action="/petsh/profile/${profileMap.user.userId}/mypostsearch"
+													method="post">
+
+													<div class="text-right">
+														
+																<input
+																	class="form-control"
+																	name="searchvalue"
+																	placeholder="Title"
+																	required="required">
+																	<button type="submit" class="btn btn-info">SEARCH</button>
+															
+														
+													</div>
+												</form>
+												<br>
 
 
 
@@ -230,7 +261,9 @@
 														<p>${singleForum.forumContent }</p>
 														<p class="text-muted">
 															<a
-																href="/petsh/forum/${profileMap.user.userId}/view/${singleForum.forumId}">More</a>
+																href="/petsh/profile/${profileMap.user.userId}/deletemypost/${singleForum.forumId}">Delete</a>
+															/<a
+																href="/petsh/profile/${profileMap.user.userId}/myPostdetail/${singleForum.forumId}">Update</a>
 														</p>
 													</div>
 
@@ -258,12 +291,12 @@
 																<p class="text-muted">
 																	<small>${singlePet.petColor }</small>
 																</p>
+
+
+																<a
+																	href="/petsh/profile/${profileMap.user.userId}/deletemypet/${singlePet.petId}">Delete</a>
 															</div>
 														</div>
-
-
-
-
 
 													</div>
 												</c:forEach>
@@ -302,31 +335,6 @@
 	<script src="${pageContext.request.contextPath }/asset/js/app.min.js"></script>
 	<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
 	<script>
-		var lastName = $('input[name="lastName"]').val();
-		var firstName = $('input[name="firstName"]').val();
-		var password = $('input[name="password"]').val();
-		var email = $('input[name="email"]').val();
-		var userbio = $('textarea[name="userbio"]').val();
-
-		$('input[name="lastName"]').on('change', function() {
-			lastName = $('input[name="lastName"]').val();
-		});
-
-		$('input[name="firstName"]').on('change', function() {
-			firstName = $('input[name="firstName"]').val();
-		});
-
-		$('input[name="password"]').on('change', function() {
-			password = $('input[name="password"]').val();
-		});
-
-		$('input[name="email"]').on('change', function() {
-			email = $('input[name="email"]').val();
-		});
-		$('textarea[name="userbio"]').on('change', function() {
-			userbio = $('textarea[name="userbio"]').val();
-		});
-
 		var result;
 		$('input[type=file]').on('change', function() {
 			var reader = new FileReader();
@@ -343,19 +351,13 @@
 				url : "updateprofile",
 				data : {
 					content : result,
-					lastName : lastName,
-					firstName : firstName,
-					password : password,
-					email : email,
-					userbio : userbio
-
 				},
 				success : function(msg) {
 					window.location.href = '';
-					alert("You have updated profile");
+					alert("You have updated profile photo");
 				},
 				error : function(msg) {
-					alert("Please input all the information");
+					alert("Please choose file");
 				}
 
 			});

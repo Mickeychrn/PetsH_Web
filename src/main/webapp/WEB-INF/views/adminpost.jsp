@@ -31,6 +31,9 @@
 <link
 	href="${pageContext.request.contextPath}/assetadmin/css/app.min.css"
 	rel="stylesheet" type="text/css" />
+	<link
+	href="${pageContext.request.contextPath }/asset/libs/custombox/custombox.min.css"
+	rel="stylesheet">
 
 </head>
 
@@ -68,14 +71,45 @@
 
 						<li class="menu-title">ADMIN BOARD</li>
 
-						<li><a href="/petsh/admin/user"> <i
-								class="la la-dashboard"></i> <span> User Management </span>
+						<li><a href="/petsh/admin/user"> <svg width="1em"
+									height="1em" viewBox="0 0 16 16"
+									class="bi bi-chevron-double-right" fill="currentColor"
+									xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd"
+										d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708z" />
+  <path fill-rule="evenodd"
+										d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708z" />
+</svg> <span> User Management </span>
 						</a></li>
-						<li><a href="/petsh/admin/pet"> <i
-								class="la la-dashboard"></i> <span> Pet Management </span>
+						<li><a href="/petsh/admin/pet"> <svg width="1em"
+									height="1em" viewBox="0 0 16 16"
+									class="bi bi-chevron-double-right" fill="currentColor"
+									xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd"
+										d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708z" />
+  <path fill-rule="evenodd"
+										d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708z" />
+</svg> <span> Pet Management </span>
 						</a></li>
-						<li><a href="/petsh/admin/post"> <i
-								class="la la-dashboard"></i> <span> Post Management </span>
+						<li><a href="/petsh/admin/post"> <svg width="1em"
+									height="1em" viewBox="0 0 16 16"
+									class="bi bi-chevron-double-right" fill="currentColor"
+									xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd"
+										d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708z" />
+  <path fill-rule="evenodd"
+										d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708z" />
+</svg> <span> Post Management </span>
+						</a></li>
+						<li><a href="/petsh/admin/comment"> <svg width="1em"
+									height="1em" viewBox="0 0 16 16"
+									class="bi bi-chevron-double-right" fill="currentColor"
+									xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd"
+										d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708z" />
+  <path fill-rule="evenodd"
+										d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708z" />
+</svg> <span> Comment Management </span>
 						</a></li>
 
 						<a href="/petsh/home">
@@ -117,6 +151,14 @@
 								<div class="card-body">
 
 
+									<div class="col-lg-2">
+										<a href="#custom-modal"
+											class="btn btn-info waves-effect waves-light"
+											data-animation="fadein" data-plugin="custommodal"
+											data-overlayColor="#38414a">New Forum</a>
+									</div><br>
+
+
 									<table id="basic-datatable" class="table dt-responsive nowrap">
 
 										<thead>
@@ -129,16 +171,18 @@
 										</thead>
 										<tbody>
 
-										<c:forEach items="${profileMap.forums }" var="forum">
-											<tr>
-												<th scope="row"><c:out value="${forum.forumId }" /></th>
-												<td><c:out value="${forum.forumTitle }" /></td>
-												<td><c:out value="${forum.createTime }" /></td>
-												<td><a
-													href="/petsh/admin/post/delete/${forum.forumId }"><c:out
-															value="Delete" /></a></td>
-											</tr>
-										</c:forEach>
+											<c:forEach items="${profileMap.forums }" var="forum">
+												<tr>
+													<th scope="row"><c:out value="${forum.forumId }" /></th>
+													<td><c:out value="${forum.forumTitle }" /></td>
+													<td><c:out value="${forum.createTime }" /></td>
+													<td><a
+														href="/petsh/admin/post/delete/${forum.forumId }"><c:out
+																value="Delete" /></a><br> <a
+														href="/petsh/admin/post/update/${forum.forumId }"><c:out
+																value="Update" /></a></td>
+												</tr>
+											</c:forEach>
 										</tbody>
 									</table>
 
@@ -159,6 +203,29 @@
 			<!-- content -->
 
 
+		</div>
+
+		<div id="custom-modal" class="modal-demo">
+			<button type="button" class="close"
+				onclick="Custombox.modal.close();">
+				<span>&times;</span><span class="sr-only">Close</span>
+			</button>
+			<h4 class="custom-modal-title">Add Forum</h4>
+
+			<div class="custom-modal-text text-left">
+				<form action="/petsh/admin/addforum" method="post">
+					<div class="form-group">
+						<label>Forum Title</label> <input name="forumTitle"
+							class="form-control" required="required">
+					</div>
+					<div class="form-group">
+						<label>Forum Content</label>
+						<textarea class="form-control" name="forumContent" rows="3"
+							required="required"></textarea>
+					</div>
+					<button type="submit" class="btn btn-primary">POST</button>
+				</form>
+			</div>
 		</div>
 
 	</div>
@@ -201,6 +268,8 @@
 	<!-- App js -->
 	<script
 		src="${pageContext.request.contextPath}/assetadmin/js/app.min.js"></script>
+			<script
+		src="${pageContext.request.contextPath }/asset/libs/custombox/custombox.min.js"></script>
 
 </body>
 </html>

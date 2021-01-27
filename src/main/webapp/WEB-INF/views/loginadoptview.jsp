@@ -37,7 +37,7 @@
 						<li class="has-submenu"><a href="/petsh/forum/${profileMap.user.userId}">FORUM</a></li>
 						<li class="has-submenu"><a href="/petsh/profile/${profileMap.user.userId}">PROFILE</a></li>
 						<c:set var="authority" value="${profileMap.user.authority}" />
-						<c:if test="${authority == 0}">
+						<c:if test="${authority == 1}">
 							<li class="has-submenu"><a href="/petsh/admin/user">ADMIN</a></li>
 
 						</c:if>

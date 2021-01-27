@@ -67,6 +67,26 @@ public class ForumDaoImp implements ForumDao{
 		
 		
 	}
+
+	@Override
+	public void updateFroum(Forum forum) {
+		Session currentSession = this.sessionFactory.getCurrentSession();
+		currentSession.merge(forum);
+		
+	}
+
+	@Override
+	public List<Forum> searchMyForumsByTitle(String title, Long userId) {
+		String sql="select * from petsh.Forum where forumTitle like ? and userId =? ";
+		SQLQuery query =this.sessionFactory.getCurrentSession().createSQLQuery(sql);
+		query.setParameter(0, "%"+title+"%");
+		query.setParameter(1, userId);
+		query.addEntity(Forum.class);
+		List<Forum> forums = query.list();
+		return forums;
+	}
+
+	
 	
 
 }
